@@ -7,7 +7,8 @@ on:
 
 env:
   REGISTRY: ghcr.io
-  IMAGE_OWNER: shinonomeri   # твой логин целиком в нижнем регистре
+  IMAGE_OWNER: shinonomeri   # твой логин на GitHub в нижнем регистре
+
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
@@ -34,12 +35,4 @@ jobs:
 
       - name: Build and push frontend image
         run: |
-          IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/lib-frontend:latest
-          docker build -t $IMAGE ./frontend
-          docker push $IMAGE
-
-      - name: Build and push reverse-proxy image
-        run: |
-          IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE_OWNER }}/lib-proxy:latest
-          docker build -t $IMAGE ./reverse-proxy
-          docker push $IMAGE
+          IMAGE=${{ env.REGISTRY }}/${{ env.IMAGE
